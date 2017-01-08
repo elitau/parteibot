@@ -2,7 +2,7 @@
 
 ## How it works
 
-The bot follows a to all of the defined twitter hashtags and replies to tweets including one of them
+The bot follows a to all of the defined twitter hashtags and replies to tweets including the hashtag
 with one of the associated reply_messages.
 
 
