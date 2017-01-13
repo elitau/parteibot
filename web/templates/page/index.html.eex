@@ -33,4 +33,13 @@
       </li>
     </ul>
   </div>
+
+  <div class="col-lg-6">
+    <h4>Twitter Accounts</h4>
+    <ul>
+      <li>
+        <%= link "Twitter Accounts", to: twitter_account_path(@conn, :index), name: "twitter_accounts" %>
+      </li>
+    </ul>
+  </div>
 </div>

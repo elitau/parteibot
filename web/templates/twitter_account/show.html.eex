@@ -1,0 +1,18 @@
+<h2>Show twitter account</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @twitter_account.name %>
+  </li>
+
+  <li>
+    <strong>Password:</strong>
+    <%= @twitter_account.password %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: twitter_account_path(@conn, :edit, @twitter_account) %>
+<%= link "Back", to: twitter_account_path(@conn, :index) %>

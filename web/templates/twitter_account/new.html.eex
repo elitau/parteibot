@@ -1,0 +1,6 @@
+<h2>New twitter account</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: twitter_account_path(@conn, :create) %>
+
+<%= link "Back", to: twitter_account_path(@conn, :index) %>

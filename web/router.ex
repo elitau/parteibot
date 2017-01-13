@@ -17,6 +17,8 @@ defmodule Parteibot.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+
+    resources "/twitter_accounts", TwitterAccountController
   end
 
   # Other scopes may use custom stacks.
