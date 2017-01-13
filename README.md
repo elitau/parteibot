@@ -1,5 +1,7 @@
 # Parteibot
 
+A bot that automatically replies to twitter messages. It can be configured through a webpage.
+
 ## How it works
 
 The bot follows a to all of the defined twitter hashtags and replies to tweets including the hashtag
@@ -7,6 +9,14 @@ with one of the associated reply_messages.
 
 
 ## Development
+
+### Open features
+
+ * Authentication
+ * Manage hashtags and associated replies
+ * Watch Twitter's Stream for definied hashtags
+ * Reply to a message including a definied hashtag
+ * Deployment
 
 To start your Phoenix app:
 
