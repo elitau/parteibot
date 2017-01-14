@@ -16,7 +16,8 @@ with one of the associated reply_messages.
  * Manage hashtags and associated replies
  * Watch Twitter's Stream for definied hashtags
  * Reply to a message including a definied hashtag
- * Deployment
+
+ ✔ Deployment
 
 To start your Phoenix app:
 
