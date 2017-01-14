@@ -1,0 +1,18 @@
+<h2>Show reply message</h2>
+
+<ul>
+
+  <li>
+    <strong>Content:</strong>
+    <%= @reply_message.content %>
+  </li>
+
+  <li>
+    <strong>Hashtag:</strong>
+    <%= @reply_message.hashtag_id %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: reply_message_path(@conn, :edit, @reply_message) %>
+<%= link "Back", to: reply_message_path(@conn, :index) %>

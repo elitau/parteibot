@@ -16,7 +16,9 @@ with one of the associated reply_messages.
  * Manage hashtags and associated replies
  * Watch Twitter's Stream for definied hashtags
  * Reply to a message including a definied hashtag
-
+ * Twitter account name as id in path /twitter_accounts/account_name
+ * Dev/Test Env
+   * Output html on acceptance test failures
  ✔ Deployment
 
 To start your Phoenix app:

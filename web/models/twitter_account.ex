@@ -5,6 +5,7 @@ defmodule Parteibot.TwitterAccount do
     field :name, :string
     field :password, :string
 
+    has_many :hashtags, Parteibot.Hashtag
     timestamps()
   end
 

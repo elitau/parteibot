@@ -1,0 +1,6 @@
+<h2>Edit hashtag</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: hashtag_path(@conn, :update, @hashtag) %>
+
+<%= link "Back", to: hashtag_path(@conn, :index) %>

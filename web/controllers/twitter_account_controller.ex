@@ -28,7 +28,7 @@ defmodule Parteibot.TwitterAccountController do
 
   def show(conn, %{"id" => id}) do
     twitter_account = Repo.get!(TwitterAccount, id)
-    render(conn, "show.html", twitter_account: twitter_account)
+    render(conn, "show.html", twitter_account: twitter_account, hashtags: [])
   end
 
   def edit(conn, %{"id" => id}) do

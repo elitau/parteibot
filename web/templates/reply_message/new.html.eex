@@ -1,0 +1,6 @@
+<h2>New reply message</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: reply_message_path(@conn, :create) %>
+
+<%= link "Back", to: reply_message_path(@conn, :index) %>

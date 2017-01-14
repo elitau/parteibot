@@ -19,6 +19,8 @@ defmodule Parteibot.Router do
     get "/", PageController, :index
 
     resources "/twitter_accounts", TwitterAccountController
+    resources "/hashtags",         HashtagController
+    resources "/reply_messages",   ReplyMessageController
   end
 
   # Other scopes may use custom stacks.

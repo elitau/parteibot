@@ -1,0 +1,28 @@
+<h2>Listing reply messages</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Hashtag</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for reply_message <- @reply_messages do %>
+    <tr>
+      <td><%= reply_message.content %></td>
+      <td><%= reply_message.hashtag_id %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: reply_message_path(@conn, :show, reply_message), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: reply_message_path(@conn, :edit, reply_message), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: reply_message_path(@conn, :delete, reply_message), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New reply message", to: reply_message_path(@conn, :new) %>
