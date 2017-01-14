@@ -5,7 +5,10 @@ defmodule Parteibot.UserSocket do
   # channel "room:*", Parteibot.RoomChannel
 
   ## Transports
-  transport :websocket, Phoenix.Transports.WebSocket
+  # The timeout ensures that any idle connections are closed by Phoenix before they reach Heroku's
+  # 55 second timeout window.
+  transport :websocket, Phoenix.Transports.WebSocket,
+    timeout: 45_000
   # transport :longpoll, Phoenix.Transports.LongPoll
 
   # Socket params are passed from the client and can
