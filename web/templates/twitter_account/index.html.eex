@@ -10,18 +10,18 @@
     </tr>
   </thead>
   <tbody>
-<%= for twitter_account <- @twitter_accounts do %>
-    <tr>
-      <td><%= twitter_account.name %></td>
-      <td><%= twitter_account.password %></td>
+    <%= for twitter_account <- @twitter_accounts do %>
+        <tr>
+          <td><%= twitter_account.name %></td>
+          <td><%= twitter_account.password %></td>
 
-      <td class="text-right">
-        <%= link "Show", to: twitter_account_path(@conn, :show, twitter_account), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: twitter_account_path(@conn, :edit, twitter_account), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: twitter_account_path(@conn, :delete, twitter_account), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-      </td>
-    </tr>
-<% end %>
+          <td class="text-right">
+            <%= link "Show", to: twitter_account_path(@conn, :show, twitter_account), class: "btn btn-default btn-xs" %>
+            <%= link "Edit", to: twitter_account_path(@conn, :edit, twitter_account), class: "btn btn-default btn-xs" %>
+            <%= link "Delete", to: twitter_account_path(@conn, :delete, twitter_account), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+          </td>
+        </tr>
+    <% end %>
   </tbody>
 </table>
 
