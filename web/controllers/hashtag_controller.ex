@@ -8,11 +8,6 @@ defmodule Parteibot.HashtagController do
     render(conn, "index.html", hashtags: hashtags)
   end
 
-  def new(conn, _params) do
-    changeset = Hashtag.changeset(%Hashtag{})
-    render(conn, "new.html", changeset: changeset)
-  end
-
   def create(conn, %{"hashtag" => hashtag_params}) do
     changeset = Hashtag.changeset(%Hashtag{}, hashtag_params)
 
@@ -27,7 +22,7 @@ defmodule Parteibot.HashtagController do
   end
 
   def show(conn, %{"id" => id}) do
-    hashtag = Repo.get!(Hashtag, id)
+    hashtag = Repo.get!(Hashtag, id) |> Repo.preload([:twitter_account])
     render(conn, "show.html", hashtag: hashtag, reply_messages: [])
   end
 

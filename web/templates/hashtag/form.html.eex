@@ -12,6 +12,7 @@
   </div>
 
   <div class="form-group">
+    <%= hidden_input f, :twitter_account_id, class: "form-control", value: @twitter_account_id %>
     <%= submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -26,7 +26,6 @@ defmodule Parteibot.AddTwitterAccountWithHashtagAndReplyMessagesTest do
   end
 
   defp create_hashtag(name) do
-    click({:name, "new_hashtag"})
     hashtag_form = find_element(:tag, "form")
     hashtag_form
     |> find_within_element(:id, "hashtag_name")

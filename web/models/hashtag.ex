@@ -14,7 +14,7 @@ defmodule Parteibot.Hashtag do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name])
+    |> cast(params, [:name, :twitter_account_id])
     |> validate_required([:name])
   end
 end

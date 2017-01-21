@@ -27,8 +27,13 @@ defmodule Parteibot.TwitterAccountController do
   end
 
   def show(conn, %{"id" => id}) do
-    twitter_account = Repo.get!(TwitterAccount, id)
-    render(conn, "show.html", twitter_account: twitter_account, hashtags: [])
+    twitter_account = Repo.get!(TwitterAccount, id) |> Repo.preload([:hashtags])
+    hashtag_changeset = Parteibot.Hashtag.changeset(%Parteibot.Hashtag{})
+    render(conn,
+      "show.html",
+      twitter_account: twitter_account,
+      hashtag_changeset: hashtag_changeset
+    )
   end
 
   def edit(conn, %{"id" => id}) do

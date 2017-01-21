@@ -2,7 +2,7 @@
 
 <%= link "Edit", to: hashtag_path(@conn, :edit, @hashtag) %>
 <%= link "Back", to: hashtag_path(@conn, :index) %>
-
+<%= link "Back to Account " <> "Marvin", to: twitter_account_path(@conn, :show, @hashtag.twitter_account_id) %>
 <ul>
 
   <li>

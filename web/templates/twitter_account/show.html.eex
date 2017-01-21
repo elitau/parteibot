@@ -17,16 +17,17 @@
 
 </ul>
 
+<h3>Hashtags</h3>
 <table class="table">
   <thead>
     <tr>
-      <th>Hashtag</th>
+      <th>Name</th>
 
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <%= for hashtag <- @hashtags do %>
+    <%= for hashtag <- @twitter_account.hashtags do %>
         <tr>
           <td><%= hashtag.name %></td>
 
@@ -40,5 +41,7 @@
   </tbody>
 </table>
 
-<%= link "New hashtag", to: hashtag_path(@conn, :new), name: "new_hashtag" %>
-
+<h3>New hashtag</h3>
+<%= render Parteibot.HashtagView, "form.html", changeset: @hashtag_changeset,
+                        action: hashtag_path(@conn, :create),
+                        twitter_account_id: @twitter_account.id %>
