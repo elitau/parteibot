@@ -1,22 +1,15 @@
 <h2>Show hashtag</h2>
 
-<%= link "Edit", to: hashtag_path(@conn, :edit, @hashtag) %>
-<%= link "Back", to: hashtag_path(@conn, :index) %>
-<%= link "Back to Account " <> "Marvin", to: twitter_account_path(@conn, :show, @hashtag.twitter_account_id) %>
+<%= link "Edit", to: hashtag_path(@conn, :edit, @hashtag) %> |
+<%= link "Back to Account", to: twitter_account_path(@conn, :show, @hashtag.twitter_account_id) %>
 <ul>
-
   <li>
     <strong>Name:</strong>
     <%= @hashtag.name %>
   </li>
-
-  <li>
-    <strong>Twitter account:</strong>
-    <%= @hashtag.twitter_account_id %>
-  </li>
-
 </ul>
 
+<h3>Reply messages</h3>
 <table class="table">
   <thead>
     <tr>
@@ -26,18 +19,23 @@
     </tr>
   </thead>
   <tbody>
-<%= for reply_message <- @reply_messages do %>
-    <tr>
-      <td><%= reply_message.content %></td>
+    <%= for reply_message <- @hashtag.reply_messages do %>
+        <tr>
+          <td><%= reply_message.content %></td>
 
-      <td class="text-right">
-        <%= link "Show", to: reply_message_path(@conn, :show, reply_message), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: reply_message_path(@conn, :edit, reply_message), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: reply_message_path(@conn, :delete, reply_message), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-      </td>
-    </tr>
-<% end %>
+          <td class="text-right">
+            <%= link "Show", to: reply_message_path(@conn, :show, reply_message), class: "btn btn-default btn-xs" %>
+            <%= link "Edit", to: reply_message_path(@conn, :edit, reply_message), class: "btn btn-default btn-xs" %>
+            <%= link "Delete", to: reply_message_path(@conn, :delete, reply_message), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+          </td>
+        </tr>
+    <% end %>
   </tbody>
 </table>
 
-<%= link "New reply message", to: reply_message_path(@conn, :new), name: "new_reply_message" %>
+<h3>New reply message</h3>
+<%= render Parteibot.ReplyMessageView,
+           "form.html",
+           changeset: @reply_message_changeset,
+           action: reply_message_path(@conn, :create),
+           hashtag_id: @hashtag.id %>

@@ -32,16 +32,33 @@ defmodule Parteibot.AddTwitterAccountWithHashtagAndReplyMessagesTest do
     |> fill_field(name)
 
     submit_element(hashtag_form)
+
+    hashtag_visible(name)
+  end
+
+  defp hashtag_visible(name) do
+    find_element(:tag, "tbody")
+    |> find_within_element(:tag, "tr")
+    |> visible_text
+    |> String.contains?(name)
   end
 
   defp create_reply_message(name) do
-    click({:name, "new_reply_message"})
     hashtag_form = find_element(:tag, "form")
     hashtag_form
     |> find_within_element(:id, "reply_message_content")
     |> fill_field(name)
 
     submit_element(hashtag_form)
+
+    reply_message_visible(name)
+  end
+
+  defp reply_message_visible(name) do
+    find_element(:tag, "tbody")
+    |> find_within_element(:tag, "tr")
+    |> visible_text
+    |> String.contains?(name)
   end
 
   defp visit_twitter_account do

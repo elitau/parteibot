@@ -13,7 +13,7 @@ defmodule Parteibot.ReplyMessage do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:content])
+    |> cast(params, [:content, :hashtag_id])
     |> validate_required([:content])
   end
 end

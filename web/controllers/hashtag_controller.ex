@@ -12,18 +12,19 @@ defmodule Parteibot.HashtagController do
     changeset = Hashtag.changeset(%Hashtag{}, hashtag_params)
 
     case Repo.insert(changeset) do
-      {:ok, _hashtag} ->
+      {:ok, hashtag} ->
         conn
         |> put_flash(:info, "Hashtag created successfully.")
-        |> redirect(to: hashtag_path(conn, :index))
+        |> redirect(to: twitter_account_path(conn, :show, hashtag.twitter_account_id))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
   end
 
   def show(conn, %{"id" => id}) do
-    hashtag = Repo.get!(Hashtag, id) |> Repo.preload([:twitter_account])
-    render(conn, "show.html", hashtag: hashtag, reply_messages: [])
+    hashtag = Repo.get!(Hashtag, id) |> Repo.preload([:twitter_account]) |> Repo.preload([:reply_messages])
+    reply_message_changeset = Parteibot.ReplyMessage.changeset(%Parteibot.ReplyMessage{})
+    render(conn, "show.html", hashtag: hashtag, reply_message_changeset: reply_message_changeset)
   end
 
   def edit(conn, %{"id" => id}) do

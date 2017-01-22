@@ -1,7 +1,7 @@
 <h2>Show twitter account</h2>
 
-<%= link "Edit", to: twitter_account_path(@conn, :edit, @twitter_account) %>
-<%= link "Back", to: twitter_account_path(@conn, :index) %>
+<%= link "Edit", to: twitter_account_path(@conn, :edit, @twitter_account) %> |
+<%= link "All Accounts", to: twitter_account_path(@conn, :index) %>
 
 <ul>
 
@@ -42,6 +42,8 @@
 </table>
 
 <h3>New hashtag</h3>
-<%= render Parteibot.HashtagView, "form.html", changeset: @hashtag_changeset,
-                        action: hashtag_path(@conn, :create),
-                        twitter_account_id: @twitter_account.id %>
+<%= render Parteibot.HashtagView,
+           "form.html",
+           changeset: @hashtag_changeset,
+           action: hashtag_path(@conn, :create),
+           twitter_account_id: @twitter_account.id %>

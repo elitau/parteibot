@@ -17,10 +17,10 @@ defmodule Parteibot.ReplyMessageController do
     changeset = ReplyMessage.changeset(%ReplyMessage{}, reply_message_params)
 
     case Repo.insert(changeset) do
-      {:ok, _reply_message} ->
+      {:ok, reply_message} ->
         conn
         |> put_flash(:info, "Reply message created successfully.")
-        |> redirect(to: reply_message_path(conn, :index))
+        |> redirect(to: hashtag_path(conn, :show, reply_message.hashtag_id))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
