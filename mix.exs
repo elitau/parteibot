@@ -18,8 +18,15 @@ defmodule Parteibot.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Parteibot, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+     applications: [:phoenix,
+                    :phoenix_pubsub,
+                    :phoenix_html,
+                    :cowboy,
+                    :logger,
+                    :gettext,
+                    :phoenix_ecto,
+                    :postgrex,
+                    :rollbax]]
   end
 
   # Specifies which paths to compile per environment.
@@ -38,6 +45,7 @@ defmodule Parteibot.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:hound, "~> 1.0", only: [:test, :dev]},
+     {:rollbax, "~> 0.6"},
      {:cowboy, "~> 1.0"}]
   end
 
