@@ -45,7 +45,7 @@ defmodule Parteibot.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:hound, "~> 1.0", only: [:test, :dev]},
-     {:rollbax, "~> 0.6"},
+     {:rollbax, "~> 0.8"},
      {:cowboy, "~> 1.0"}]
   end
 
