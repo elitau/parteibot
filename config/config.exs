@@ -27,3 +27,7 @@ config :logger, :console,
 import_config "#{Mix.env}.exs"
 
 config :hound, driver: "phantomjs"
+
+config :rollbax,
+  access_token: System.get_env("ROLLBAR_ACCESS_TOKEN"),
+  environment: "production"

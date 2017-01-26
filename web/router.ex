@@ -1,5 +1,6 @@
 defmodule Parteibot.Router do
   use Parteibot.Web, :router
+  use Plug.ErrorHandler
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -27,4 +28,29 @@ defmodule Parteibot.Router do
   # scope "/api", Parteibot do
   #   pipe_through :api
   # end
+
+  defp handle_errors(conn, %{kind: kind, reason: reason, stack: stacktrace}) do
+    conn =
+      conn
+      |> Plug.Conn.fetch_cookies()
+      |> Plug.Conn.fetch_query_params()
+
+    conn_data = %{
+      "request" => %{
+        "cookies" => conn.req_cookies,
+        "url" => "#{conn.scheme}://#{conn.host}:#{conn.port}#{conn.request_path}",
+        "user_ip" => (conn.remote_ip |> Tuple.to_list() |> Enum.join(".")),
+        "headers" => Enum.into(conn.req_headers, %{}),
+        "params" => conn.params,
+        "method" => conn.method,
+      },
+      "server" => %{
+        "pid" => System.get_env("MY_SERVER_PID"),
+        "host" => "#{System.get_env("MY_HOSTNAME")}:#{System.get_env("MY_PORT")}",
+        "root" => System.get_env("MY_APPLICATION_PATH"),
+      },
+    }
+
+    Rollbax.report(kind, reason, stacktrace, %{}, conn_data)
+  end
 end
