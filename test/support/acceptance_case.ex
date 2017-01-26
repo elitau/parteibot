@@ -5,7 +5,6 @@ defmodule Parteibot.AcceptanceCase do
     quote do
       use Hound.Helpers
 
-      import Ecto.Model
       import Ecto.Query, only: [from: 2]
       import Parteibot.Router.Helpers
 
