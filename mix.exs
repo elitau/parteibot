@@ -26,6 +26,7 @@ defmodule Parteibot.Mixfile do
                     :gettext,
                     :phoenix_ecto,
                     :postgrex,
+                    :extwitter,
                     :rollbax]]
   end
 
@@ -46,6 +47,7 @@ defmodule Parteibot.Mixfile do
      {:gettext, "~> 0.11"},
      {:hound, "~> 1.0", only: [:test, :dev]},
      {:rollbax, "~> 0.8"},
+     {:extwitter, "~> 0.8"},
      {:cowboy, "~> 1.0"}]
   end
 
