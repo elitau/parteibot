@@ -36,11 +36,11 @@ defmodule Parteibot.TwitterStreamWorker do
 
   defp send_reply(tweet) do
     IO.puts "#{tweet.user.screen_name}: #{tweet.text}\n---------------\n"
-    if tweet.user.screen_name == "chef_tschenko" do
-      IO.puts "Wont reply to my own tweet."
-    else
-      ExTwitter.update("Steuern rauf: #{String.slice(tweet.text, 0..100)}")
-    end
+    # if tweet.user.screen_name == "chef_tschenko" do
+    #   IO.puts "Wont reply to my own tweet."
+    # else
+      ExTwitter.update("Ja genau: #{tweet.user.screen_name}")
+    # end
   end
 
   defp config_extwitter do
