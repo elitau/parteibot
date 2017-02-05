@@ -33,13 +33,15 @@ defmodule Parteibot.TwitterStreamWorker do
     )
   end
 
+  # t :: %ExTwitter.Model.Tweet{contributors: term, in_reply_to_status_id_str: term, filter_level: term, favorite_count: term, withheld_scope: term, scopes: term, geo: term, display_text_range: term, retweeted: term, entities: term, id_str: term, quoted_status_id_str: term, quoted_status_id: term, in_reply_to_user_id_str: term, quoted_status: term, created_at: term, user: term, possibly_sensitive: term, truncated: term, in_reply_to_status_id: term, source: term, extended_entities: term, favorited: term, text: term, withheld_in_countries: term, lang: term, id: term, withheld_copyright: term, retweet_count: term, place: term, current_user_retweet: term, coordinates: term, retweeted_status: term, in_reply_to_user_id: term, full_text: term, in_reply_to_screen_name: term}
+
   defp send_reply(tweet) do
     IO.puts "Sending reply"
     IO.puts "#{tweet.user.screen_name}: #{tweet.text}\n---------------\n"
     # if tweet.user.screen_name == "chef_tschenko" do
     #   IO.puts "Wont reply to my own tweet."
     # else
-    ExTwitter.update("Ja genau: #{tweet.user.screen_name}")
+    ExTwitter.update("Ja genau: #{tweet.user.screen_name}, #{tweet.id_str}")
     # end
   end
 
