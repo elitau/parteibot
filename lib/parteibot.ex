@@ -5,7 +5,7 @@ defmodule Parteibot do
   # for more information on OTP Applications
   def start(_type, _args) do
     import Supervisor.Spec
-    children = if System.get_env("WORKER") == "true" do
+    children =
       [
         # Start the Ecto repository
         supervisor(Parteibot.Repo, []),
@@ -14,16 +14,16 @@ defmodule Parteibot do
         # Start your own worker by calling: Parteibot.Worker.start_link(arg1, arg2, arg3)
         worker(Parteibot.TwitterStreamWorker, []),
       ]
-    else
-      [
-        # Start the Ecto repository
-        supervisor(Parteibot.Repo, []),
-        # Start the endpoint when the application starts
-        supervisor(Parteibot.Endpoint, []),
-        # Start your own worker by calling: Parteibot.Worker.start_link(arg1, arg2, arg3)
-        # worker(Parteibot.TwitterStreamWorker, []),
-      ]
-    end
+    # else
+    #   [
+    #     # Start the Ecto repository
+    #     supervisor(Parteibot.Repo, []),
+    #     # Start the endpoint when the application starts
+    #     supervisor(Parteibot.Endpoint, []),
+    #     # Start your own worker by calling: Parteibot.Worker.start_link(arg1, arg2, arg3)
+    #     # worker(Parteibot.TwitterStreamWorker, []),
+    #   ]
+    # end
     # Define workers and child supervisors to be supervised
 
 
