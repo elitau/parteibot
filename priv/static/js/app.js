@@ -1437,12 +1437,22 @@ function isLinkToSubmitParent(element) {
   return isLinkTag && shouldSubmitParent;
 }
 
+function getClosestForm(element) {
+  while (element && element !== document && element.nodeType === Node.ELEMENT_NODE) {
+    if (element.tagName === 'FORM') {
+      return element;
+    }
+    element = element.parentNode;
+  }
+  return null;
+}
+
 function didHandleSubmitLinkClick(element) {
   while (element && element.getAttribute) {
     if (isLinkToSubmitParent(element)) {
       var message = element.getAttribute('data-confirm');
       if (message === null || confirm(message)) {
-        element.parentNode.submit();
+        getClosestForm(element).submit();
       };
       return true;
     } else {
@@ -1452,7 +1462,6 @@ function didHandleSubmitLinkClick(element) {
   return false;
 }
 
-// for links with HTTP methods other than GET
 window.addEventListener('click', function (event) {
   if (event.target && didHandleSubmitLinkClick(event.target)) {
     event.preventDefault();
@@ -1540,8 +1549,8 @@ channel.join().receive("ok", function (resp) {
 exports.default = socket;
 });
 
-;require.alias("phoenix_html/priv/static/phoenix_html.js", "phoenix_html");
-require.alias("phoenix/priv/static/phoenix.js", "phoenix");require.register("___globals___", function(exports, require, module) {
+;require.alias("phoenix/priv/static/phoenix.js", "phoenix");
+require.alias("phoenix_html/priv/static/phoenix_html.js", "phoenix_html");require.register("___globals___", function(exports, require, module) {
   
 });})();require('___globals___');
 
