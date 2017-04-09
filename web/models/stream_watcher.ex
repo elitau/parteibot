@@ -16,7 +16,7 @@ defmodule Parteibot.StreamWatcher do
   def handle_info(:start_streaming, state) do
     spawn_link fn ->
       hashtag = state
-      twitter_stream = ExTwitter.stream_filter([track: hashtag], :infinity)
+      twitter_stream = ExTwitter.stream_filter([track: hashtag.name], :infinity)
       |> Stream.filter(fn tweet -> handle_hashtag_mention(tweet, hashtag) end)
       Enum.to_list(twitter_stream)
     end
@@ -24,10 +24,10 @@ defmodule Parteibot.StreamWatcher do
   end
 
   defp handle_hashtag_mention(tweet, hashtag) do
-    # Parteibot.Responder.send_reply(tweet, hashtag)
+    Parteibot.Responder.send_reply(tweet, hashtag)
     # IO.inspect(hashtag)
     # IO.inspect(tweet.text)
-    Logger.info("Hashtag '#{hashtag}' mentionend in '#{tweet.text}'")
+    # Logger.info("Hashtag '#{hashtag.name}' mentionend in '#{tweet.text}'")
     tweet
   end
 
