@@ -36,8 +36,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :parteibot, Parteibot.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "admin1",
+  password: "admin1",
   database: "parteibot_dev",
   hostname: "localhost",
   pool_size: 10

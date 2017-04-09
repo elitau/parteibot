@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :parteibot, Parteibot.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "admin1",
+  password: "admin1",
   database: "parteibot_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
