@@ -14,7 +14,7 @@ defmodule Parteibot.StreamWatcherSupervisor do
   end
 
   defp watcher_for(hashtag) do
-    worker(Parteibot.StreamWatcher, [hashtag])
+    worker(Parteibot.StreamWatcher, [hashtag], [id: hashtag.name])
   end
 
   defp hashtags do
