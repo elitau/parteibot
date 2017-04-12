@@ -7,10 +7,10 @@ defmodule Parteibot.StreamWatcher do
     GenServer.start_link(__MODULE__, hashtag)
   end
 
-  def init(state) do
-    config_extwitter()
+  def init(hashtag) do
+    config_extwitter(hashtag)
     send(self(), :start_streaming)
-    {:ok, state}
+    {:ok, hashtag}
   end
 
   def handle_info(:start_streaming, state) do
@@ -31,12 +31,28 @@ defmodule Parteibot.StreamWatcher do
     tweet
   end
 
-  defp config_extwitter do
+  defp config_extwitter(hashtag) do
     ExTwitter.configure(
-       consumer_key: "QZhARwLdNDOLLMLwtkpWa5RxX",
-       consumer_secret: "Vg5VTzqVS8qiy1S6SRg0ZxLhXtdGkH3JQcyUz28vJGrumext9j",
-       access_token: "121459971-PvfK40YY7OGscGD9QYW5QB4y6WatBrLRHD7LkF1o",
-       access_token_secret: "XOAkc2gNMo6PtmlplfDSOE3TU1sdUqdG7redJbswI5JbA"
+       consumer_key: consumer_key,
+       consumer_secret: consumer_secret,
+       access_token: access_token(hashtag),
+       access_token_secret: access_token_secret(hashtag)
     )
+  end
+
+  defp consumer_key do
+    Application.get_env(:ueberauth, Ueberauth.Strategy.Twitter.OAuth)[:consumer_key]
+  end
+
+  defp consumer_secret do
+    Application.get_env(:ueberauth, Ueberauth.Strategy.Twitter.OAuth)[:consumer_secret]
+  end
+
+  defp access_token(hashtag) do
+    hashtag.twitter_account.access_token
+  end
+
+  defp access_token_secret(hashtag) do
+    hashtag.twitter_account.access_token_secret
   end
 end

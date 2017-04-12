@@ -31,11 +31,17 @@ defmodule Parteibot.AuthController do
         conn
         |> put_flash(:info, "Successfully authenticated.")
         |> put_session(:current_user, user)
+        |> persist(user)
         |> redirect(to: "/")
       {:error, reason} ->
         conn
         |> put_flash(:error, reason)
         |> redirect(to: "/")
     end
+  end
+
+  defp persist(conn, user) do
+    Parteibot.TwitterAccount.create_or_update(user)
+    conn
   end
 end

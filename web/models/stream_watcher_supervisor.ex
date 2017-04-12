@@ -18,6 +18,6 @@ defmodule Parteibot.StreamWatcherSupervisor do
   end
 
   defp hashtags do
-    Parteibot.Repo.all(Parteibot.Hashtag)
+    Parteibot.Repo.all(Parteibot.Hashtag) |> Parteibot.Repo.preload([:twitter_account])
   end
 end
