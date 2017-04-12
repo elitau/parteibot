@@ -1,6 +1,18 @@
 <div class="jumbotron">
   <h2><%= gettext "Welcome to %{name}", name: "Phoenix!" %></h2>
   <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
+
+  <%= if @current_user do %>
+    <h2>Welcome, <%= @current_user.name %>!</h2>
+    <img src="<%= @current_user.avatar %>" class="img-circle"/>
+    <%= link "Logout", to: auth_path(@conn, :delete), method: :delete, class: "btn btn-danger" %>
+    <br>
+  <% else %>
+    <a class="btn btn-primary btn-lg" href="/auth/twitter">
+      <i class="fa fa-twitter"></i>
+      Sign in with Twitter
+    </a>
+  <% end %>
 </div>
 
 <div class="row marketing">

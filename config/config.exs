@@ -31,3 +31,11 @@ config :hound, driver: "phantomjs"
 config :rollbax,
   access_token: System.get_env("ROLLBAR_ACCESS_TOKEN"),
   environment: "production"
+
+config :ueberauth, Ueberauth,
+  providers: [
+    twitter: { Ueberauth.Strategy.Twitter, [] },
+  ]
+config :ueberauth, Ueberauth.Strategy.Twitter.OAuth,
+  consumer_key: System.get_env("TWITTER_CONSUMER_KEY"),
+  consumer_secret: System.get_env("TWITTER_CONSUMER_SECRET")

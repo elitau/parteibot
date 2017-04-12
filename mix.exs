@@ -27,6 +27,9 @@ defmodule Parteibot.Mixfile do
                     :phoenix_ecto,
                     :postgrex,
                     :extwitter,
+                    :oauth,
+                    :ueberauth,
+                    :ueberauth_twitter,
                     :rollbax]]
   end
 
@@ -48,6 +51,9 @@ defmodule Parteibot.Mixfile do
      {:hound, "~> 1.0"},
      {:rollbax, "~> 0.8"},
      {:extwitter, "~> 0.8"},
+     {:oauth, github: "tim/erlang-oauth"},
+     {:ueberauth, "~> 0.4"},
+     {:ueberauth_twitter, "~> 0.2"},
      {:cowboy, "~> 1.0"}]
   end
 

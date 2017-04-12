@@ -1,6 +1,7 @@
 defmodule Parteibot.Router do
   use Parteibot.Web, :router
   use Plug.ErrorHandler
+  require Ueberauth
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -12,6 +13,15 @@ defmodule Parteibot.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+  end
+
+  scope "/auth", Parteibot do
+    pipe_through [:browser]
+
+    get "/:provider", AuthController, :request
+    get "/:provider/callback", AuthController, :callback
+    post "/:provider/callback", AuthController, :callback
+    delete "/logout", AuthController, :delete
   end
 
   scope "/", Parteibot do
