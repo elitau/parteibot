@@ -21,4 +21,4 @@ erl_crash.dump
 parteibot.sublime-project
 parteibot.sublime-workspace
 /priv/static
-.env
+.envrc
