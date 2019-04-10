@@ -66,7 +66,8 @@ defmodule Parteibot.MixProject do
       # {:oauth, github: "tim/erlang-oauth"},
       {:ueberauth, "~> 0.5"},
       {:ueberauth_twitter, "~> 0.2"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:distillery, "~> 1.5.5"}
     ]
   end
 
