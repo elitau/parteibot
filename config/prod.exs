@@ -29,7 +29,7 @@ config :parteibot, Parteibot.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: "${DATABASE_URL}",
   database: "",
-  ssl: true,
+  ssl: System.get_env("DISABLE_PG_SSL") != "true",
   # Free tier db only allows 4 connections. Rolling deploys need pool_size*(n+1) connections.
   pool_size: 2
 
