@@ -1,2 +1,1 @@
-web: mix phoenix.server
-worker: WORKER=true mix run --no-halt
+web: MIX_ENV=prod mix phx.server
