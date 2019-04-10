@@ -8,7 +8,7 @@ use Mix.Config
 # file or create a script for recreating it, since it's
 # kept out of version control and might be hard to recover
 # or recreate for your teammates (or you later on).
-config :parteibot, Parteibot.Endpoint,
+config :parteibot, Web.Endpoint,
   secret_key_base: "RREc78cAFcXQQsL8MMpCohm1Uy3Cvje5+i00fpUxAb5vVNtPMdMOZPXHTOGPOJqh"
 
 # Configure your database

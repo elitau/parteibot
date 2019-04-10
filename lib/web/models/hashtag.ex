@@ -1,11 +1,11 @@
 defmodule Parteibot.Hashtag do
-  use Parteibot.Web, :model
+  use Parteibot, :model
 
   schema "hashtags" do
-    field :name, :string
+    field(:name, :string)
 
-    belongs_to :twitter_account, Parteibot.TwitterAccount
-    has_many :reply_messages, Parteibot.ReplyMessage
+    belongs_to(:twitter_account, Parteibot.TwitterAccount)
+    has_many(:reply_messages, Parteibot.ReplyMessage)
     timestamps()
   end
 

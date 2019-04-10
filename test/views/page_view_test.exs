@@ -1,3 +1,3 @@
 defmodule Parteibot.PageViewTest do
-  use Parteibot.ConnCase, async: true
+  use Web.ConnCase, async: true
 end

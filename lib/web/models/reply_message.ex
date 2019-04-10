@@ -1,9 +1,9 @@
 defmodule Parteibot.ReplyMessage do
-  use Parteibot.Web, :model
+  use Parteibot, :model
 
   schema "reply_messages" do
-    field :content, :string
-    belongs_to :hashtag, Parteibot.Hashtag
+    field(:content, :string)
+    belongs_to(:hashtag, Parteibot.Hashtag)
 
     timestamps()
   end

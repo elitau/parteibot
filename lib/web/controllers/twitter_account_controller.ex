@@ -1,5 +1,5 @@
-defmodule Parteibot.TwitterAccountController do
-  use Parteibot.Web, :controller
+defmodule Web.TwitterAccountController do
+  use Web, :controller
 
   alias Parteibot.TwitterAccount
 
@@ -21,6 +21,7 @@ defmodule Parteibot.TwitterAccountController do
         conn
         |> put_flash(:info, "Twitter account created successfully.")
         |> redirect(to: twitter_account_path(conn, :index))
+
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -29,7 +30,9 @@ defmodule Parteibot.TwitterAccountController do
   def show(conn, %{"id" => id}) do
     twitter_account = Repo.get!(TwitterAccount, id) |> Repo.preload([:hashtags])
     hashtag_changeset = Parteibot.Hashtag.changeset(%Parteibot.Hashtag{})
-    render(conn,
+
+    render(
+      conn,
       "show.html",
       twitter_account: twitter_account,
       hashtag_changeset: hashtag_changeset
@@ -51,6 +54,7 @@ defmodule Parteibot.TwitterAccountController do
         conn
         |> put_flash(:info, "Twitter account updated successfully.")
         |> redirect(to: twitter_account_path(conn, :show, twitter_account))
+
       {:error, changeset} ->
         render(conn, "edit.html", twitter_account: twitter_account, changeset: changeset)
     end

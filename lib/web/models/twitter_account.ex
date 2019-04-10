@@ -1,13 +1,13 @@
 defmodule Parteibot.TwitterAccount do
-  use Parteibot.Web, :model
+  use Parteibot, :model
 
   schema "twitter_accounts" do
-    field :name, :string
-    field :password, :string
-    field :access_token, :string
-    field :access_token_secret, :string
+    field(:name, :string)
+    field(:password, :string)
+    field(:access_token, :string)
+    field(:access_token_secret, :string)
 
-    has_many :hashtags, Parteibot.Hashtag
+    has_many(:hashtags, Parteibot.Hashtag)
     timestamps()
   end
 
@@ -24,13 +24,18 @@ defmodule Parteibot.TwitterAccount do
   def create_or_update(twitter_account_params) do
     unless account_exists?(twitter_account_params) do
       Parteibot.TwitterAccount.changeset(%Parteibot.TwitterAccount{}, twitter_account_params)
-      |> Parteibot.Repo.insert
+      |> Parteibot.Repo.insert()
     end
   end
 
   def account_exists?(twitter_account_params) do
-    query = from ta in Parteibot.TwitterAccount,
-            where: ta.name == ^twitter_account_params.name
+    name = twitter_account_params.name
+
+    query =
+      from(ta in Parteibot.TwitterAccount,
+        where: ta.name == ^name
+      )
+
     Parteibot.Repo.one(query)
   end
 end

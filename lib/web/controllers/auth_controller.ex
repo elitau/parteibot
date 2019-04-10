@@ -1,10 +1,10 @@
-defmodule Parteibot.AuthController do
+defmodule WEb.AuthController do
   @moduledoc """
   Auth controller responsible for handling Ueberauth responses
   """
 
-  use Parteibot.Web, :controller
-  plug Ueberauth
+  use Web, :controller
+  plug(Ueberauth)
 
   alias Ueberauth.Strategy.Helpers
 
@@ -33,6 +33,7 @@ defmodule Parteibot.AuthController do
         |> put_session(:current_user, user)
         |> persist(user)
         |> redirect(to: "/")
+
       {:error, reason} ->
         conn
         |> put_flash(:error, reason)

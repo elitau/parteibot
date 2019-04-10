@@ -1,5 +1,5 @@
 defmodule Parteibot.HashtagControllerTest do
-  use Parteibot.ConnCase
+  use Web.ConnCase
 
   # alias Parteibot.Hashtag
   # @valid_attrs %{name: "hashtag"}

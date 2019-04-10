@@ -1,5 +1,5 @@
-defmodule Parteibot.ReplyMessageController do
-  use Parteibot.Web, :controller
+defmodule Web.ReplyMessageController do
+  use Web, :controller
 
   alias Parteibot.ReplyMessage
 
@@ -21,6 +21,7 @@ defmodule Parteibot.ReplyMessageController do
         conn
         |> put_flash(:info, "Reply message created successfully.")
         |> redirect(to: hashtag_path(conn, :show, reply_message.hashtag_id))
+
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -46,6 +47,7 @@ defmodule Parteibot.ReplyMessageController do
         conn
         |> put_flash(:info, "Reply message updated successfully.")
         |> redirect(to: reply_message_path(conn, :show, reply_message))
+
       {:error, changeset} ->
         render(conn, "edit.html", reply_message: reply_message, changeset: changeset)
     end

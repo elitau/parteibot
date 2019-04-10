@@ -1,4 +1,4 @@
-defmodule Parteibot.ErrorHelpers do
+defmodule Web.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -10,7 +10,7 @@ defmodule Parteibot.ErrorHelpers do
   """
   def error_tag(form, field) do
     if error = form.errors[field] do
-      content_tag :span, translate_error(error), class: "help-block"
+      content_tag(:span, translate_error(error), class: "help-block")
     end
   end
 
@@ -32,9 +32,9 @@ defmodule Parteibot.ErrorHelpers do
     #     dgettext "errors", "is invalid"
     #
     if count = opts[:count] do
-      Gettext.dngettext(Parteibot.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(Web.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(Parteibot.Gettext, "errors", msg, opts)
+      Gettext.dgettext(Web.Gettext, "errors", msg, opts)
     end
   end
 end

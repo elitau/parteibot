@@ -1,5 +1,5 @@
 defmodule Parteibot.ReplyMessageControllerTest do
-  use Parteibot.ConnCase
+  use Web.ConnCase
 
   # alias Parteibot.ReplyMessage
   # @valid_attrs %{content: "some content"}

@@ -1,4 +1,4 @@
-defmodule Parteibot.ConnCase do
+defmodule Web.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -25,10 +25,10 @@ defmodule Parteibot.ConnCase do
       import Ecto.Changeset
       import Ecto.Query
 
-      import Parteibot.Router.Helpers
+      import Web.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint Parteibot.Endpoint
+      @endpoint Web.Endpoint
     end
   end
 

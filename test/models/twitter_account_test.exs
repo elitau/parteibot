@@ -3,7 +3,12 @@ defmodule Parteibot.TwitterAccountTest do
 
   alias Parteibot.TwitterAccount
 
-  @valid_attrs %{name: "some content", password: "some content"}
+  @valid_attrs %{
+    name: "some content",
+    password: "some content",
+    access_token: "access_token",
+    access_token_secret: "access_token_secret"
+  }
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

@@ -22,3 +22,4 @@ parteibot.sublime-project
 parteibot.sublime-workspace
 /priv/static
 .envrc
+phantomjs.output.txt

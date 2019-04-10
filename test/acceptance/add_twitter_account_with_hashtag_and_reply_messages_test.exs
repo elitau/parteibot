@@ -5,15 +5,16 @@ defmodule Parteibot.AddTwitterAccountWithHashtagAndReplyMessagesTest do
     navigate_to("/")
     click({:name, "twitter_accounts"})
     create_twitter_account("die_partei", "twitter_password")
-    visit_twitter_account
+    visit_twitter_account()
     create_hashtag("Steuern")
-    visit_hashtag
+    visit_hashtag()
     create_reply_message("Steuern rauf!")
   end
 
   defp create_twitter_account(name, password) do
     click({:name, "new_twitter_account"})
     twitter_account_form = find_element(:tag, "form")
+
     twitter_account_form
     |> find_within_element(:id, "twitter_account_name")
     |> fill_field(name)
@@ -23,10 +24,12 @@ defmodule Parteibot.AddTwitterAccountWithHashtagAndReplyMessagesTest do
     |> fill_field(password)
 
     submit_element(twitter_account_form)
+    visible_page_text() |> IO.inspect()
   end
 
   defp create_hashtag(name) do
     hashtag_form = find_element(:tag, "form")
+
     hashtag_form
     |> find_within_element(:id, "hashtag_name")
     |> fill_field(name)
@@ -45,6 +48,7 @@ defmodule Parteibot.AddTwitterAccountWithHashtagAndReplyMessagesTest do
 
   defp create_reply_message(name) do
     hashtag_form = find_element(:tag, "form")
+
     hashtag_form
     |> find_within_element(:id, "reply_message_content")
     |> fill_field(name)

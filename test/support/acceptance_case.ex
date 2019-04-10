@@ -6,14 +6,14 @@ defmodule Parteibot.AcceptanceCase do
       use Hound.Helpers
 
       import Ecto.Query, only: [from: 2]
-      import Parteibot.Router.Helpers
+      import Web.Router.Helpers
 
       alias Parteibot.Repo
 
       # The default endpoint for testing
-      @endpoint Parteibot.Endpoint
+      @endpoint Web.Endpoint
 
-      hound_session
+      hound_session()
     end
   end
 

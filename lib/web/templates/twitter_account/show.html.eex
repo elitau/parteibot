@@ -42,7 +42,7 @@
 </table>
 
 <h3>New hashtag</h3>
-<%= render Parteibot.HashtagView,
+<%= render Web.HashtagView,
            "form.html",
            changeset: @hashtag_changeset,
            action: hashtag_path(@conn, :create),
