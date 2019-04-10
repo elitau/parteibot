@@ -8,7 +8,7 @@
 /deps
 
 # The directory node downloads your dependencies sources to.
-/node_modules
+/assets/node_modules/
 
 # Where 3rd-party dependencies like ExDoc output generated docs.
 /doc
@@ -22,4 +22,5 @@ parteibot.sublime-project
 parteibot.sublime-workspace
 /priv/static
 .envrc
+/config/*.secret.exs
 phantomjs.output.txt
