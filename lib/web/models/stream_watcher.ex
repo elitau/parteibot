@@ -51,12 +51,12 @@ defmodule Parteibot.StreamWatcher do
     Application.get_env(:ueberauth, Ueberauth.Strategy.Twitter.OAuth)[:consumer_secret]
   end
 
-  defp access_token(hashtag) do
+  defp access_token(_hashtag) do
     # hashtag.twitter_account.access_token
     System.get_env("TWITTER_ACCESS_TOKEN")
   end
 
-  defp access_token_secret(hashtag) do
+  defp access_token_secret(_hashtag) do
     # hashtag.twitter_account.access_token_secret
     System.get_env("TWITTER_ACCESS_TOKEN_SECRET")
   end
