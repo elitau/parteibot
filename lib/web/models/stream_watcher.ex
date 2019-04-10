@@ -16,13 +16,12 @@ defmodule Parteibot.StreamWatcher do
     spawn_link(fn ->
       config_extwitter(hashtag)
 
-      twitter_stream =
-        ExTwitter.stream_filter([track: hashtag.name], :infinity)
-        |> Stream.filter(fn tweet -> handle_hashtag_mention(tweet, hashtag) end)
-
-      Enum.to_list(twitter_stream)
+      ExTwitter.stream_filter([track: hashtag.name], :infinity)
+      |> Stream.filter(fn tweet -> handle_hashtag_mention(tweet, hashtag) end)
+      |> Enum.to_list()
     end)
 
+    Logger.info("Started stream for #{hashtag.name}")
     {:noreply, hashtag}
   end
 
