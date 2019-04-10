@@ -20,5 +20,4 @@ config :parteibot, Parteibot.Repo,
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
-config :rollbax,
-  enabled: false
+config :rollbax, enabled: false
