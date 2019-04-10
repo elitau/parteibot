@@ -1,27 +1,30 @@
-<div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}", name: "Phoenix!" %></h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
+<section class="phx-hero">
+  <h1><%= gettext "Welcome to %{name}!", name: "Parteibot" %></h1>
+  <p>A productive bot<br/>by Die PARTEI.</p>
+</section>
 
-  <%= if @current_user do %>
-    <h2>Welcome, <%= @current_user.name %>!</h2>
-    <img src="<%= @current_user.avatar %>" class="img-circle"/>
-    <%= link "Logout", to: auth_path(@conn, :delete), method: :delete, class: "btn btn-danger" %>
-    <br>
-  <% else %>
-    <a class="btn btn-primary btn-lg" href="/auth/twitter">
-      <i class="fa fa-twitter"></i>
-      Sign in with Twitter
-    </a>
-  <% end %>
-</div>
+<section class="row">
+  <article class="column">
+    <h2>User Info</h2>
+    <%= if @current_user do %>
+      <h2>Welcome, <%= @current_user.name %>!</h2>
+      <img src="<%= @current_user.avatar %>" class="img-circle"/>
+      <%= link "Logout", to: auth_path(@conn, :delete), method: :delete, class: "btn btn-danger" %>
+      <br>
+    <% else %>
+      <a class="btn btn-primary btn-lg" href="/auth/twitter">
+        <i class="fa fa-twitter"></i>
+        Sign in with Twitter
+      </a>
+    <% end %>
 
-<div class="row marketing">
-  <div class="col-lg-6">
-    <h4>Twitter Accounts</h4>
+  </article>
+  <article class="column">
+    <h2>Help</h2>
     <ul>
       <li>
         <%= link "Twitter Accounts", to: twitter_account_path(@conn, :index), name: "twitter_accounts" %>
       </li>
     </ul>
-  </div>
-</div>
+  </article>
+</section>
