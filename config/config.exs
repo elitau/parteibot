@@ -16,6 +16,8 @@ config :parteibot, Web.Endpoint,
   render_errors: [view: Web.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Parteibot.PubSub, adapter: Phoenix.PubSub.PG2]
 
+config :phoenix, :json_library, Jason
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
