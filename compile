@@ -1,3 +1,8 @@
-npm run deploy
+# app_root/compile
 cd $phoenix_dir
-mix "${phoenix_ex}.digest"
+mix assets.compile
+mix phx.digest
+
+if mix help phx.digest.clean 1>/dev/null 2>&1; then
+  mix phx.digest.clean
+fi

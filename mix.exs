@@ -81,9 +81,22 @@ defmodule Parteibot.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
+      "assets.compile": &compile_assets/1,
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate", "test"]
     ]
+  end
+
+  defp compile_assets(_) do
+    case Mix.env() do
+      :dev ->
+        Mix.shell().cmd(~S(cd ./assets; ./node_modules/.bin/webpack --mode development))
+
+      _ ->
+        Mix.shell().cmd(
+          ~S(cd ./assets; ./node_modules/.bin/webpack --mode production --display "errors-only")
+        )
+    end
   end
 end
