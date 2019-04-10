@@ -61,8 +61,9 @@ defmodule Parteibot.MixProject do
       {:gettext, "~> 0.11"},
       {:hound, "~> 1.0"},
       {:rollbax, "~> 0.10"},
+      {:oauther, "~> 1.1"},
       {:extwitter, "~> 0.8"},
-      {:oauth, github: "tim/erlang-oauth"},
+      # {:oauth, github: "tim/erlang-oauth"},
       {:ueberauth, "~> 0.5"},
       {:ueberauth_twitter, "~> 0.2"},
       {:plug_cowboy, "~> 2.0"}

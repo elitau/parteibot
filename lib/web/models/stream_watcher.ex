@@ -13,12 +13,16 @@ defmodule Parteibot.StreamWatcher do
   end
 
   def handle_info(:start_streaming, hashtag) do
-    spawn_link fn ->
+    spawn_link(fn ->
       config_extwitter(hashtag)
-      twitter_stream = ExTwitter.stream_filter([track: hashtag.name], :infinity)
-      |> Stream.filter(fn tweet -> handle_hashtag_mention(tweet, hashtag) end)
+
+      twitter_stream =
+        ExTwitter.stream_filter([track: hashtag.name], :infinity)
+        |> Stream.filter(fn tweet -> handle_hashtag_mention(tweet, hashtag) end)
+
       Enum.to_list(twitter_stream)
-    end
+    end)
+
     {:noreply, hashtag}
   end
 
@@ -31,12 +35,11 @@ defmodule Parteibot.StreamWatcher do
   end
 
   defp config_extwitter(hashtag) do
-    ExTwitter.configure(:process, [
-        consumer_key: consumer_key,
-        consumer_secret: consumer_secret,
-        access_token: access_token(hashtag),
-        access_token_secret: access_token_secret(hashtag)
-      ]
+    ExTwitter.configure(:process,
+      consumer_key: consumer_key(),
+      consumer_secret: consumer_secret(),
+      access_token: access_token(hashtag),
+      access_token_secret: access_token_secret(hashtag)
     )
   end
 
@@ -49,10 +52,12 @@ defmodule Parteibot.StreamWatcher do
   end
 
   defp access_token(hashtag) do
-    hashtag.twitter_account.access_token
+    # hashtag.twitter_account.access_token
+    System.get_env("TWITTER_ACCESS_TOKEN")
   end
 
   defp access_token_secret(hashtag) do
-    hashtag.twitter_account.access_token_secret
+    # hashtag.twitter_account.access_token_secret
+    System.get_env("TWITTER_ACCESS_TOKEN_SECRET")
   end
 end
