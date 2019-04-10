@@ -15,7 +15,7 @@ config :parteibot, Web.Endpoint,
   # Possibly not needed, but doesn't hurt
   http: [port: {:system, "PORT"}],
   url: [host: System.get_env("APP_NAME") <> ".gigalixirapp.com", port: 80],
-  secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   server: true,
   cache_static_manifest: "priv/static/cache_manifest.json"
 
@@ -25,7 +25,7 @@ config :logger, level: :info
 # Configure your database
 config :parteibot, Parteibot.Repo,
   url: System.get_env("DATABASE_URL"),
-  ssl: true,
+  ssl: System.get_env("DISABLE_DATABASE_SSL") != "true",
   pool_size: 2
 
 config :rollbax,
