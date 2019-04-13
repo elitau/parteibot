@@ -29,10 +29,7 @@ config :parteibot, Parteibot.Repo,
   pool_size: 2
 
 config :rollbax,
-  enabled: false,
-  environment: System.get_env("ROLLBAR_ENVIRONMENT"),
-  access_token: System.get_env("ROLLBAR_ACCESS_TOKEN"),
-  enable_crash_reports: true
+  environment: "production"
 
 # ## SSL Support
 #
