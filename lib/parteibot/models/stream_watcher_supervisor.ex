@@ -19,8 +19,14 @@ defmodule Parteibot.StreamWatcherSupervisor do
 
   defp hashtags do
     [
-      %Parteibot.Hashtag{name: "apple"},
-      %Parteibot.Hashtag{name: "google"}
+      %Parteibot.Hashtag{
+        name: "erlang",
+        reply_messages: [%Parteibot.ReplyMessage{content: "Seems right."}]
+      },
+      %Parteibot.Hashtag{
+        name: "#cologne",
+        reply_messages: [%Parteibot.ReplyMessage{content: "Yeah. Köln!"}]
+      }
     ]
 
     # Parteibot.Repo.all(Parteibot.Hashtag) |> Parteibot.Repo.preload([:twitter_account])
