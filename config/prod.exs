@@ -29,6 +29,7 @@ config :parteibot, Parteibot.Repo,
   pool_size: 2
 
 config :rollbax,
+  enabled: true,
   environment: "production"
 
 # ## SSL Support

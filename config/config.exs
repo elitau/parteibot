@@ -39,7 +39,7 @@ config :ueberauth, Ueberauth.Strategy.Twitter.OAuth,
   consumer_secret: System.get_env("TWITTER_CONSUMER_SECRET")
 
 config :rollbax,
-  enabled: true,
+  enabled: :log,
   environment: "development",
   access_token: System.get_env("ROLLBAR_ACCESS_TOKEN"),
   enable_crash_reports: true
