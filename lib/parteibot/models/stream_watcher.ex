@@ -1,4 +1,7 @@
 defmodule Parteibot.StreamWatcher do
+  @moduledoc """
+  Subscribes to tweets with the given word and replies to the tweet.
+  """
   use GenServer
   require Logger
   defstruct hashtag: nil, twitter_stream: nil
@@ -8,6 +11,7 @@ defmodule Parteibot.StreamWatcher do
   end
 
   def init(hashtag) do
+    config_extwitter()
     send(self(), :start_streaming)
     {:ok, hashtag}
   end
@@ -25,7 +29,7 @@ defmodule Parteibot.StreamWatcher do
     {:noreply, hashtag}
   end
 
-  defp handle_hashtag_mention(tweet, hashtag) do
+  def handle_hashtag_mention(tweet, hashtag) do
     Parteibot.Responder.send_reply(tweet, hashtag)
     # IO.inspect(hashtag)
     # IO.inspect(tweet.text)
@@ -33,7 +37,9 @@ defmodule Parteibot.StreamWatcher do
     tweet
   end
 
-  defp config_extwitter(hashtag) do
+  def config_extwitter(), do: config_extwitter(nil)
+
+  def config_extwitter(hashtag) do
     ExTwitter.configure(:process,
       consumer_key: consumer_key(),
       consumer_secret: consumer_secret(),
