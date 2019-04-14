@@ -1,4 +1,4 @@
-defmodule WEb.AuthController do
+defmodule Web.AuthController do
   @moduledoc """
   Auth controller responsible for handling Ueberauth responses
   """
