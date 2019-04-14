@@ -8,7 +8,7 @@ defmodule Parteibot.Responder do
     reply_content = to_message(tweet, hashtag)
 
     Logger.info(
-      "Hashtag: #{hashtag.name}; #{tweet.user.screen_name}: \"#{tweet.text}\"I've replied with: #{
+      "Hashtag: #{hashtag.name}; #{tweet.user.screen_name}: \"#{tweet.text}\" replied with: #{
         reply_content
       }"
     )
