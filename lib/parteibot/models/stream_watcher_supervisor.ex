@@ -21,11 +21,27 @@ defmodule Parteibot.StreamWatcherSupervisor do
     [
       %Parteibot.Hashtag{
         name: "erlang",
-        reply_messages: [%Parteibot.ReplyMessage{content: "Seems right."}]
+        reply_messages: [
+          %Parteibot.ReplyMessage{content: "Seems right."},
+          %Parteibot.ReplyMessage{content: "Thats cool."},
+          %Parteibot.ReplyMessage{content: "Oh no."},
+          %Parteibot.ReplyMessage{content: "Oh yes."},
+          %Parteibot.ReplyMessage{content: "Yess, erlang!."},
+          %Parteibot.ReplyMessage{content: "Just the best"},
+          %Parteibot.ReplyMessage{content: "Thank you."}
+        ]
       },
       %Parteibot.Hashtag{
         name: "#cologne",
-        reply_messages: [%Parteibot.ReplyMessage{content: "Yeah. Köln!"}]
+        reply_messages: [
+          %Parteibot.ReplyMessage{content: "Yeah. Köln!"},
+          %Parteibot.ReplyMessage{content: "Cologne is the best."},
+          %Parteibot.ReplyMessage{content: "Just cool"},
+          %Parteibot.ReplyMessage{content: "So nice."},
+          %Parteibot.ReplyMessage{content: "I like it"},
+          %Parteibot.ReplyMessage{content: "Stimmt, seh ich auch so."},
+          %Parteibot.ReplyMessage{content: "Warum auch nicht?"}
+        ]
       }
     ]
 
