@@ -12,7 +12,16 @@
       <section class="container">
         <nav role="navigation">
           <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
+            <%= if @current_user do %>
+              <li><h2>Welcome, <%= @current_user.name %>!</h2></li>
+              <img src="<%= @current_user.avatar %>" class="img-circle"/>
+              <li><%= link "Logout", to: auth_path(@conn, :delete), method: :delete, class: "btn btn-danger" %></li>
+            <% else %>
+              <li><a class="btn btn-primary btn-lg" href="/auth/twitter">
+                <i class="fa fa-twitter"></i>
+                Sign in with Twitter
+              </a></li>
+            <% end %>
           </ul>
         </nav>
         <a href="/" class="phx-logo">

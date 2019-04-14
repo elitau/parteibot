@@ -5,26 +5,42 @@
 
 <section class="row">
   <article class="column">
-    <h2>User Info</h2>
+    <h2>Stichworte</h2>
     <%= if @current_user do %>
-      <h2>Welcome, <%= @current_user.name %>!</h2>
-      <img src="<%= @current_user.avatar %>" class="img-circle"/>
-      <%= link "Logout", to: auth_path(@conn, :delete), method: :delete, class: "btn btn-danger" %>
-      <br>
-    <% else %>
-      <a class="btn btn-primary btn-lg" href="/auth/twitter">
-        <i class="fa fa-twitter"></i>
-        Sign in with Twitter
-      </a>
-    <% end %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
 
-  </article>
-  <article class="column">
-    <h2>Help</h2>
-    <ul>
-      <li>
-        <%= link "Twitter Accounts", to: twitter_account_path(@conn, :index), name: "twitter_accounts" %>
-      </li>
-    </ul>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= for hashtag <- @twitter_account.hashtags do %>
+              <tr>
+                <td><%= hashtag.name %></td>
+
+                <td class="text-right">
+                  <%= link "Show", to: hashtag_path(@conn, :show, hashtag), class: "btn btn-default btn-xs" %>
+                  <%= link "Edit", to: hashtag_path(@conn, :edit, hashtag), class: "btn btn-default btn-xs" %>
+                  <%= link "Delete", to: hashtag_path(@conn, :delete, hashtag), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+                </td>
+              </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <h3>Neues Stichwort</h3>
+      <%= render Web.HashtagView,
+                "form.html",
+                changeset: @hashtag_changeset,
+                action: hashtag_path(@conn, :create),
+                twitter_account_id: @twitter_account.id %>
+    <% else %>
+    Bitte <a class="btn btn-primary btn-lg" href="/auth/twitter">
+        <i class="fa fa-twitter"></i>
+        Einloggen
+      </a> um neue Stichworte einzurichten
+    <% end %>
   </article>
 </section>
